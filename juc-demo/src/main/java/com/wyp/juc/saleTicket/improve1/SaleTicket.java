@@ -1,11 +1,23 @@
-package com.wyp.juc;
+package com.wyp.juc.saleTicket.improve1;
+
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 class Ticket {//资源类：火车票
     private int number = 30;
+    private Lock lock = new ReentrantLock();
 
-    public synchronized void saleTicket() {
-        if(number > 0){
-            System.out.println(Thread.currentThread().getName()+ "\t卖出第："+ (number --)+ "\t还剩下："+ number);
+    //去掉了synchronized关键字，使用lock的方式实现加锁
+    public void saleTicket() {
+        lock.lock();
+        try {
+            if(number > 0){
+                System.out.println(Thread.currentThread().getName()+ "\t卖出第："+ (number --)+ "\t还剩下："+ number);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
         }
     }
 
