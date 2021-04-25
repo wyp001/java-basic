@@ -1,4 +1,4 @@
-package com.wyp.javabasicapi.map;
+package com.wyp.javabasicapi.map.merge;
 
 /**
  * @author wangyupeng
