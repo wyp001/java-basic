@@ -9,10 +9,16 @@ public class SingleLinkedListTest {
         //创建要给链表
         SingleLinkedList singleLinkedList = new SingleLinkedList();
         //加入
-        singleLinkedList.add(hero1);
-        singleLinkedList.add(hero2);
-        singleLinkedList.add(hero3);
-        singleLinkedList.add(hero4);
+        // singleLinkedList.add(hero1);
+        // singleLinkedList.add(hero2);
+        // singleLinkedList.add(hero3);
+        // singleLinkedList.add(hero4);
+
+        // 按照编号顺序 插入
+        singleLinkedList.addByOrder(hero1);
+        singleLinkedList.addByOrder(hero4);
+        singleLinkedList.addByOrder(hero2);
+        singleLinkedList.addByOrder(hero3);
         System.out.println("---------update前---------");
         singleLinkedList.show();
 
@@ -21,12 +27,12 @@ public class SingleLinkedListTest {
         // System.out.println("---------update后---------");
         // singleLinkedList.show();
 
-        singleLinkedList.delete(hero1);
-        singleLinkedList.delete(hero2);
-        singleLinkedList.delete(hero3);
-        singleLinkedList.delete(hero4);
-        System.out.println("---------delete---------");
-        singleLinkedList.show();
+        // singleLinkedList.delete(hero1);
+        // singleLinkedList.delete(hero2);
+        // singleLinkedList.delete(hero3);
+        // singleLinkedList.delete(hero4);
+        // System.out.println("---------delete---------");
+        // singleLinkedList.show();
     }
 
 }
@@ -56,6 +62,38 @@ class SingleLinkedList {
         }
         // 此时temp为尾部节点,将尾部节点的next指向新增节点
         temp.next = heroNode;
+    }
+
+    /**
+     * 按照   heroNode.no 顺序插入
+     */
+    public void addByOrder(HeroNode heroNode) {
+        boolean flag = false; //是否找到待修改节点
+        HeroNode temp = head; //临时节点，相当于指针
+        while (true){
+            if (temp.next == null){
+                // temp节点已经是尾部节点
+                break;
+            }
+            if (temp.next.no == heroNode.no){
+                // 待插入节点的编号在链表中已存在
+                flag = true;
+                break;
+            }else if (temp.next.no > heroNode.no){
+                // 指针的下一个节点编号大于待插入节点编号，在temp后面插入新节点
+                break;
+            }
+            // 未找到尾部节点，指针后移
+            temp = temp.next;
+        }
+        if (flag) {
+            System.out.printf("待插入节点在链表中已存在，编号为：【%d】", heroNode.no);
+        }else {
+            // 插入新节点
+            heroNode.next = temp.next; // 新节点的下一个节点为原temp的下个节点
+            temp.next = heroNode; // temp的下个节点指向新节点
+        }
+
     }
 
     public void update(HeroNode heroNode) {
