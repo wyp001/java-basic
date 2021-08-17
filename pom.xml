@@ -11,6 +11,8 @@
     <modules>
         <module>proxy-demo</module>
         <module>juc-demo</module>
+        <module>java-basic-api</module>
+        <module>data-structure</module>
     </modules>
 
 
