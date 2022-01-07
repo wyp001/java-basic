@@ -3,6 +3,10 @@ package com.wyp.javabasicapi.StopWatch;
 
 import org.springframework.util.StopWatch;
 
+/**
+ * 使用 StopWatch 优雅打印执行耗时
+ * https://mp.weixin.qq.com/s/4Px7UwMiPfEyg537JTlabw
+ */
 public class StopWatchTest {
 
 
