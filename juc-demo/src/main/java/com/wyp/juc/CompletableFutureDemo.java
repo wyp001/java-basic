@@ -13,7 +13,7 @@ public class CompletableFutureDemo {
         // 异步回调
         CompletableFuture cf2 = CompletableFuture.supplyAsync(()->{
             System.out.println(Thread.currentThread().getName()+ "\t cf2");
-            // int age = 10/0;
+            int age = 10/0;
             return 1024;
         }).whenComplete((t,e)->{
             System.out.println("*****t: "+ t);
